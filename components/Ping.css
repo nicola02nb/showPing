@@ -10,4 +10,6 @@ div:has(.pingDisplay) > div:not(.pingDisplay) {
 
 .pingDisplay {
     color: inherit;
+    font-size: 14px;
+    line-height: 1.45;
 }
