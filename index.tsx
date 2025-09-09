@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
 import { React } from "@webpack/common";
 
@@ -14,7 +13,10 @@ import { displayKrispButton, settings } from "./settings";
 export default definePlugin({
     name: "ShowPing",
     description: "Displays your live ping.",
-    authors: [Devs.nicola02nb],
+    authors: [{
+        name: "nicola02nb",
+        id: 257900031351193600n
+    }],
     settings,
     patches: [
         {
