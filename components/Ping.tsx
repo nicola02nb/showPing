@@ -26,5 +26,5 @@ export function PingElement() {
 
     FluxDispatcher.subscribe("RTC_CONNECTION_PING", updatePing);
 
-    return (<Text variant="text-md/medium" className="pingDisplay">{ping !== undefined ? `${ping} ms` : "N/A"}</Text>);
+    return (<Text variant="text-md/medium" className="pingDisplay">{ping !== undefined ? `(${ping} ms)` : "(N/A)"}</Text>);
 }
