@@ -5,5 +5,17 @@
  */
 
 import { definePluginSettings } from "@api/Settings";
+import { OptionType } from "@utils/types";
 
-export const settings = definePluginSettings({});
+export const settings = definePluginSettings({
+    showNearbyConnectionStatus: {
+        type: OptionType.BOOLEAN,
+        description: "Show ping nearby connection status.",
+        default: false
+    },
+    showUnderConnectionIcon: {
+        type: OptionType.BOOLEAN,
+        description: "Show ping under connection icon.",
+        default: true
+    },
+});

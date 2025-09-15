@@ -25,6 +25,13 @@ export default definePlugin({
                 match: /(children:\i}\):null,children:)(\(0,\i.jsx\)\(\i.Text,.{0,50}\i\}\))/,
                 replace: "$1[$2,$self.renderPing()]"
             }
+        },
+        {
+            find: "\"quality\",\"largePing\"",
+            replacement: {
+                match: /(\(0,l.jsx\)\(r,p\({className:a\(\)\(h.ping,{\[h.largePing\]:n}\)},i\)\))/,
+                replace: " $self.renderContainer($1)"
+            }
         }
     ],
     start: () => {
@@ -33,7 +40,15 @@ export default definePlugin({
     },
 
     renderPing() {
-        return <PingElement />;
+        if (!settings.store.showNearbyConnectionStatus) return null;
+        return <PingElement variant="text-sm/medium" />;
+    },
+    renderContainer(children: React.ReactNode) {
+        if (!settings.store.showUnderConnectionIcon) return children;
+        return <div className="pingContainer">
+            {children}
+            <PingElement variant="text-xxs/medium" parenthesis={false} />
+        </div>;
     }
 });
 

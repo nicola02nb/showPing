@@ -6,16 +6,21 @@
 
 import "./Ping.css";
 
-import { FluxEvent } from "@vencord/discord-types";
+import { FluxEvent, TextVariant } from "@vencord/discord-types";
 import { FluxDispatcher, Text, useEffect, useState } from "@webpack/common";
 
 import { RTCConnectionStore } from "../stores";
 
-export function PingElement() {
+export function PingElement({ variant, parenthesis = true }: { variant: TextVariant; parenthesis?: boolean; }) {
     const [ping, setPing] = useState(RTCConnectionStore.getLastPing());
 
     const updatePing = (_: FluxEvent) => {
         setPing(RTCConnectionStore.getLastPing());
+    };
+
+    const formatPing = (ping: number | undefined) => {
+        if (ping === undefined) return "N/A";
+        return parenthesis ? `(${ping} ms)` : `${ping} ms`;
     };
 
     useEffect(() => {
@@ -26,5 +31,5 @@ export function PingElement() {
 
     FluxDispatcher.subscribe("RTC_CONNECTION_PING", updatePing);
 
-    return (<Text variant="text-md/medium" className="pingDisplay">{ping !== undefined ? `(${ping} ms)` : "(N/A)"}</Text>);
+    return (<Text variant={variant} className="pingDisplay">{formatPing(ping)}</Text>);
 }

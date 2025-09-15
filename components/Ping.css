@@ -8,8 +8,19 @@ div:has(.pingDisplay) > div:not(.pingDisplay) {
     overflow: hidden;
 }
 
+.pingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    margin-right: 7px;
+}
+
+.pingContainer * {
+    margin: 0 !important;
+}
+
 .pingDisplay {
-    color: inherit;
-    font-size: 14px;
-    line-height: 1.45;
+    color: var(--text-feedback-positive);
+    text-align: center;
 }
