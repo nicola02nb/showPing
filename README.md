@@ -10,4 +10,4 @@ A Vencord(VC) plugin that displays your live ping
 
 ## Preview:
 
-<img width="279" height="57" alt="Screenshot 2025-09-08 160530" src="https://github.com/user-attachments/assets/86a0d702-1689-40d5-aee7-547bb1565542" />
+<img width="306" height="64" alt="Screenshot 2025-09-15 112631" src="https://github.com/user-attachments/assets/db308aa0-91ec-4174-bdc7-4a91d7621c3f" />
