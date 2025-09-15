@@ -1,9 +1,15 @@
+div[class*="connection_"],
+div[class*="rtcConnectionStatus_"],
+div[class^="inner_"]:has(div[class^="rtcConnectionStatusWrapper_"]) {
+    height: fit-content !important;
+}
+
 div[class^="default"]:has(.pingDisplay) {
     display: flex;
     gap: 3px;
 }
 
-div:has(.pingDisplay) > div:not(.pingDisplay) {
+div[class^="default"]:has(.pingDisplay) :first-child {
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -21,6 +27,5 @@ div:has(.pingDisplay) > div:not(.pingDisplay) {
 }
 
 .pingDisplay {
-    color: var(--text-feedback-positive);
     text-align: center;
 }

@@ -47,7 +47,7 @@ export default definePlugin({
         if (!settings.store.showUnderConnectionIcon) return children;
         return <div className="pingContainer">
             {children}
-            <PingElement variant="text-xxs/medium" parenthesis={false} />
+            <PingElement variant="text-xxs/medium" parenthesis={false} color="var(--text-feedback-positive)" />
         </div>;
     }
 });
