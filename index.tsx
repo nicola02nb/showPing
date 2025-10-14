@@ -22,14 +22,14 @@ export default definePlugin({
         {
             find: ".hoverableStatus),hoverText:",
             replacement: {
-                match: /(children:\i}\):null,children:)(\(0,\i.jsx\)\(\i.Text,.{0,50}\i\}\))/,
+                match: /(children:\i}\):null,children:)(\(0,\i.jsx\)\(\i.Text,.+?\i\}\))/,
                 replace: "$1[$2,$self.renderPing()]"
             }
         },
         {
             find: "\"quality\",\"largePing\"",
             replacement: {
-                match: /(\(0,l.jsx\)\(r,p\({className:a\(\)\(h.ping,{\[h.largePing\]:n}\)},i\)\))/,
+                match: /(\(0,\i.jsx\)\(\i,\i\({className:\i\(\)\(\i.ping,{\[\i.largePing\]:\i}\)},i\)\))/,
                 replace: " $self.renderContainer($1)"
             }
         }
