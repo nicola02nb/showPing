@@ -22,7 +22,7 @@ div[class^="default"]:has(.pingDisplay) :first-child {
     margin-right: 7px;
 }
 
-.pingContainer * {
+.pingContainer > svg {
     margin: 0 !important;
 }
 
