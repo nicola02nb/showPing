@@ -1,5 +1,5 @@
-div[class*="connection_"],
-div[class*="rtcConnectionStatus_"],
+div[class^="flex_"][class*="connection_"],
+div[class^="rtcConnectionStatus_"],
 div[class^="inner_"]:has(div[class^="rtcConnectionStatusWrapper_"]) {
     height: fit-content !important;
 }
