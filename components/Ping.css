@@ -1,15 +1,15 @@
 div[class^="flex_"][class*="connection_"],
 div[class^="rtcConnectionStatus_"],
-div[class^="inner_"]:has(div[class^="rtcConnectionStatusWrapper_"]) {
+div[class^="inner_"]:has(> div[class^="rtcConnectionStatusWrapper_"]) {
     height: fit-content !important;
 }
 
-div[class^="default"]:has(.pingDisplay) {
+div[class^="default"]:has(> div.pingDisplay) {
     display: flex;
     gap: 3px;
 }
 
-div[class^="default"]:has(.pingDisplay) :first-child {
+div[class^="default"]:has(> div.pingDisplay) :first-child {
     text-overflow: ellipsis;
     overflow: hidden;
 }
