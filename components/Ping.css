@@ -1,7 +1,7 @@
-div[class^="flex_"][class*="connection_"],
+div[class^="container_"] > div[class^="flex_"][class*="connection_"],
 div[class^="rtcConnectionStatus_"],
 div[class^="inner_"]:has(> div[class^="rtcConnectionStatusWrapper_"]) {
-    height: fit-content !important;
+    height: fit-content;
 }
 
 div[class^="default"]:has(> div.pingDisplay) {
@@ -9,7 +9,7 @@ div[class^="default"]:has(> div.pingDisplay) {
     gap: 3px;
 }
 
-div[class^="default"]:has(> div.pingDisplay) > :not(.pingDisplay) {
+div[class^="default"]:has(> div.pingDisplay) > div[class^="text-md/medium"] {
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -22,8 +22,8 @@ div[class^="default"]:has(> div.pingDisplay) > :not(.pingDisplay) {
     margin-right: 7px;
 }
 
-.pingContainer > svg {
-    margin: 0 !important;
+.pingContainer > svg[class^="ping_"] {
+    margin: 0;
 }
 
 .pingDisplay {
