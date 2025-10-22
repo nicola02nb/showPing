@@ -9,7 +9,7 @@ div[class^="default"]:has(> div.pingDisplay) {
     gap: 3px;
 }
 
-div[class^="default"]:has(> div.pingDisplay) :first-child {
+div[class^="default"]:has(> div.pingDisplay) > :not(.pingDisplay) {
     text-overflow: ellipsis;
     overflow: hidden;
 }
