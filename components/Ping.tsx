@@ -7,9 +7,11 @@
 import "./Ping.css";
 
 import { FluxEvent, TextVariant } from "@vencord/discord-types";
-import { FluxDispatcher, Text, useEffect, useState } from "@webpack/common";
+import { FluxDispatcher, useEffect, useState } from "@webpack/common";
+
 
 import { RTCConnectionStore } from "../stores";
+import { BaseText, TextCompat } from "@components/BaseText";
 
 export function PingElement({ variant, parenthesis = true, color }: { variant: TextVariant; parenthesis?: boolean; color?: string; }) {
     const [ping, setPing] = useState(() => RTCConnectionStore.getLastPing());
@@ -29,5 +31,5 @@ export function PingElement({ variant, parenthesis = true, color }: { variant: T
         };
     }, []);
 
-    return (<Text variant={variant} className="pingDisplay" style={{ color: color ?? "inherit" }}>{formatPing(ping)}</Text>);
+    return (<TextCompat variant={variant} className="pingDisplay" style={{ color: color ?? "inherit" }}>{formatPing(ping)}</TextCompat>);
 }
