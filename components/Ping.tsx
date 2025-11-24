@@ -11,7 +11,7 @@ import { FluxDispatcher, useEffect, useState } from "@webpack/common";
 
 
 import { RTCConnectionStore } from "../stores";
-import { BaseText, TextCompat } from "@components/BaseText";
+import { TextCompat } from "@components/BaseText";
 
 export function PingElement({ variant, parenthesis = true, color }: { variant: TextVariant; parenthesis?: boolean; color?: string; }) {
     const [ping, setPing] = useState(() => RTCConnectionStore.getLastPing());
