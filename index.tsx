@@ -10,6 +10,11 @@ import { React } from "@webpack/common";
 import { PingElement } from "./components/Ping";
 import { settings } from "./settings";
 
+import { findByPropsLazy } from "@webpack";
+
+const classes = findByPropsLazy("voiceUsers", "channel");
+const oldContainer = classes.container;
+
 export default definePlugin({
     name: "ShowPing",
     description: "Displays your live ping.",
@@ -35,8 +40,10 @@ export default definePlugin({
         }
     ],
     start: () => {
+        classes.container += " vc-connection-container";
     },
     stop: () => {
+        classes.container = oldContainer;
     },
 
     renderPing() {
