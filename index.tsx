@@ -7,13 +7,10 @@
 import definePlugin from "@utils/types";
 import { React } from "@webpack/common";
 
-import { PingElement } from "./components/Ping";
 import { settings } from "./settings";
 
-import { findByPropsLazy } from "@webpack";
-
-const classes = findByPropsLazy("voiceUsers", "channel");
-const oldContainer = classes.container;
+import { PingUnderConnection } from "./components/PingUnderConnection";
+import { PingNearbyStatus } from "./components/PingNearbyStatus";
 
 export default definePlugin({
     name: "ShowPing",
@@ -25,38 +22,32 @@ export default definePlugin({
     settings,
     patches: [
         {
-            find: ".hoverableStatus),hoverText:",
+            find: "#{intl::E2EE_VIDEO_DETAILS}",
+            replacement: [
+                {
+                    match: /(children:\i}\):null,children:)(\(0,\i.jsx\)\(\i.\i,[^}]+}\))/,
+                    replace: "$1[$2,$self.renderPing()]"
+                },
+                {
+                    match: /(?<=children:)\(0,\i\.jsx\)\(\i,{quality:\i,largePing:\i}\)/,
+                    replace: "$self.renderContainer($&)"
+                },
+            ]
+        },
+        /* There has to be a better way to do this */
+        {
+            find: /\[\i\.fontScaling\]:\i/,
             replacement: {
-                match: /(children:\i}\):null,children:)(\(0,\i.jsx\)\(\i.Text,.+?\i\}\))/,
-                replace: "$1[$2,$self.renderPing()]"
+                match: /\[\i\.fontScaling\]:\i}[^)]+/,
+                replace: "$&, \"vc-connection-container\""
             }
         },
-        {
-            find: "\"quality\",\"largePing\"",
-            replacement: {
-                match: /(\(0,\i.jsx\)\(\i,\i\({className:\i\(\)\(\i.ping,{\[\i.largePing\]:\i}\)},i\)\))/,
-                replace: " $self.renderContainer($1)"
-            }
-        }
     ],
-    start: () => {
-        classes.container += " vc-connection-container";
-    },
-    stop: () => {
-        classes.container = oldContainer;
-    },
 
     renderPing() {
-        if (!settings.store.showNearbyConnectionStatus) return null;
-        return <PingElement size="sm" />;
+        return <PingNearbyStatus />;
     },
     renderContainer(children: React.ReactNode) {
-        if (!settings.store.showUnderConnectionIcon) return children;
-        return <div className="pingContainer">
-            {children}
-            <PingElement size="xxs" parenthesis={false} color="var(--text-feedback-positive)" />
-        </div>;
+        return <PingUnderConnection>{children}</PingUnderConnection>;
     }
 });
-
-
